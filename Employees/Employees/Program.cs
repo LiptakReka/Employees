@@ -8,26 +8,47 @@ using System.ComponentModel;
 
 namespace Employees
 {
+    public class employee
+    {
+        public int id { get; set; }
+        public string nev { get; set; }
+        public int kor { get; set; }
+        public int fizetes { get; set; }
+
+
+        public employee(int id, string nev, int kor, int fizetes)
+        {
+            this.id = id;
+            this.nev = nev;
+            this.kor = kor;
+            this.fizetes = fizetes;
+        }
+    }
     internal class Program
     {
-         static List<string> listaadat = new List<string>();
+         static List<employee> listaadat = new List<employee>();
         static void Main(string[] args)
         {
            string[] adatok= File.ReadAllLines("tulajdonsagok_100sor.txt");
             for (int i = 0; i < adatok.Length; i++)
             {
-                string id = adatok[i].Split(';')[0];
-                string nev = adatok[i].Split(';')[1];
-                string kor = adatok[i].Split(';')[2];
-                string fzetes = adatok[i].Split(';')[3];
+                string[] reszek = adatok[i].Split(';');
+                int id = int.Parse(reszek[0]);
+                string nev = reszek[1];
+                int kor = int.Parse(reszek[2]);
+                int fzetes = int.Parse(reszek[3]);
 
-                listaadat.Add(id);
-                listaadat.Add(nev);
-                listaadat.Add(kor);
-                listaadat.Add(fzetes);
+                listaadat.Add(new employee(id, nev, kor, fzetes));
+
             }
-            
 
+
+            Console.WriteLine("Dolgozók nevei:");
+            foreach (var employe in listaadat)
+            {
+                Console.WriteLine(employe.nev);
+            }
+           
         }
     }
 }
