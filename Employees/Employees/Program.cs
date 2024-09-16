@@ -42,13 +42,22 @@ namespace Employees
 
             }
 
-
+            //1.feladat
             Console.WriteLine("Dolgozók nevei:");
             foreach (var employe in listaadat)
             {
                 Console.WriteLine(employe.nev);
             }
-           
+
+            int legmagasabb =listaadat.Max(x => x.fizetes);
+            var top =listaadat.Where(x => x.fizetes==legmagasabb).ToList();
+
+
+            Console.WriteLine("A legmagasabb fizetéssel bíró tag: ");
+            foreach (var fizetesek in top)
+            {
+                Console.WriteLine($"Id : {fizetesek.id} neve: {fizetesek.nev} kora : {fizetesek.kor}  Fizetése: {fizetesek.fizetes}");
+            }
         }
     }
 }
