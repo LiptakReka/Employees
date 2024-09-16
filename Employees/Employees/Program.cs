@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace Employees
 {
@@ -57,6 +58,12 @@ namespace Employees
             foreach (var fizetesek in top)
             {
                 Console.WriteLine($"Id : {fizetesek.id} neve: {fizetesek.nev} kora : {fizetesek.kor}  Fizetése: {fizetesek.fizetes}");
+            }
+
+            Console.WriteLine("Nyugdíj előtt állók: (10 éven belül");
+            foreach (var nyugdij in listaadat.Where(x=> x.kor >=55))
+            {
+                Console.WriteLine($"név: { nyugdij.nev } Kor:  {nyugdij.kor}");
             }
         }
     }
