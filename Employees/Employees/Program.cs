@@ -9,9 +9,12 @@ namespace Employees
 {
     internal class Program
     {
+        List<string> list = new List<string>();
         static void Main(string[] args)
         {
-           
+
+          
+          
         }
     }
 }
