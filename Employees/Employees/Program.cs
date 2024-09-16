@@ -44,12 +44,13 @@ namespace Employees
             }
 
             //1.feladat
+
             Console.WriteLine("Dolgozók nevei:");
             foreach (var employe in listaadat)
             {
                 Console.WriteLine(employe.nev);
             }
-
+            Console.WriteLine("------------------------------------------------------");
             int legmagasabb =listaadat.Max(x => x.fizetes);
             var top =listaadat.Where(x => x.fizetes==legmagasabb).ToList();
 
@@ -59,12 +60,15 @@ namespace Employees
             {
                 Console.WriteLine($"Id : {fizetesek.id} neve: {fizetesek.nev} kora : {fizetesek.kor}  Fizetése: {fizetesek.fizetes}");
             }
-
+            Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("Nyugdíj előtt állók: (10 éven belül");
             foreach (var nyugdij in listaadat.Where(x=> x.kor >=55))
             {
                 Console.WriteLine($"név: { nyugdij.nev } Kor:  {nyugdij.kor}");
             }
+            Console.WriteLine("-----------------------------------------------------------");
+            int otvenfelett = listaadat.Count(e => e.fizetes > 50000);
+            Console.WriteLine($"Ötvenezer felett keresők: {otvenfelett}");
         }
     }
 }
